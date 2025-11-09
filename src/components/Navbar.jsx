@@ -39,7 +39,7 @@ export default function Navbar() {
         <div className="dropdown">
           <button
             ref={btnRef}
-            className="btn btn-warning dropdown-toggle"
+            className="btn btn-outline-light"
             type="button"
             id="dropdownFavs"
             data-bs-toggle="dropdown"

@@ -15,11 +15,11 @@ export default function ListPage({ type }) {
   const [err, setErr] = useState("");//guarda posibles errores
 
   useEffect(() => {
-    setLoading(true);//activa el estado de carga
+    setLoading(true);
     fetchList(type, 10)
       .then(setItems)
       .catch((e) => setErr(e.message))
-      .finally(() => setLoading(false));//desactiva el estado de carga
+      .finally(() => setLoading(false));
   }, [type]);
 
   if (loading) return <p>Cargando…</p>;

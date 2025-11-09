@@ -2,11 +2,11 @@ const API = "https://www.swapi.tech/api";
 
 //Funcion para lista (people,planets,vehicles)
 export async function list(type, page = 1, limit = 10) {
-  const url = `${API}/${type}?page=${page}&limit=${limit}`;//url con tipo, num. pagina y limite de resultados
-  const res = await fetch(url);//peticion a la API
+  const url = `${API}/${type}?page=${page}&limit=${limit}`;
+  const res = await fetch(url);
   if (!res.ok) throw new Error("Error obteniendo lista");
   const data = await res.json();
-  return data.results || [];//retorna los resultados o un array vacio si no hay resultados
+  return data.results || [];
 }
 
 //funcion para obtener detalles de un elemento por tipo e ID

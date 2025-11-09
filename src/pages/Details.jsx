@@ -4,18 +4,14 @@ import { fetchDetail } from "../services/swapi.js";
 import { getImageUrl, placeholder } from "../utilidades/images.js";
 import { useFavs } from "../context/FavsContext.jsx";
 
-/**
- * Este componente funciona tanto si le pasas `type` por props
- * (como en tus rutas /people/:id) como si tu ruta tuviera
- * /:category/:id y lo quieres leer de useParams().
- */
+
 export default function Details({ type: typeProp }) {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [err, setErr] = useState("");
   const { toggleFav } = useFavs();
 
-  const type = typeProp; // en tus rutas actuales viene por prop
+  const type = typeProp; 
 
   useEffect(() => {
     (async () => {
@@ -34,7 +30,7 @@ export default function Details({ type: typeProp }) {
   const props = data.properties || {};
   const name = props.name || data.uid;
 
-  // Utilidad para formatear claves y hacerlas mas legibles: birth_year -> birth year
+  
   const formatKey = (k) =>
     k.replaceAll("_", " ").replace(/\b\w/g, (c) => c.toUpperCase());
 
@@ -52,14 +48,14 @@ export default function Details({ type: typeProp }) {
       <div className="col-md-7">
         <h2 className="mb-1">{name}</h2>
         {data.description && (
-          <p className="text-muted">{data.description}</p>
+          <p className="card-text">{data.description}</p>
         )}
 
         <button
-          className="btn btn-warning mb-3"
+          className="btn btn-outline-light"
           onClick={() => toggleFav({ type, id, name })}
         >
-          ⭐ Guardar en favoritos
+          ❤️ Guardar en favoritos
         </button>
 
         {/* Grid simple etiqueta/valor; text-break para URLs largas */}
